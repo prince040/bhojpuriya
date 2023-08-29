@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    color: #fcfcfc;
+
+}
+* h3{
+    font-weight: 400;
+    padding: 0px 12px;
+}
+* i{
+    cursor: pointer;
+}
+.container::-webkit-scrollbar{
+    width: 3px; 
+}
+.container::-webkit-scrollbar-track{
+        background-color: transparent;
+}
+.container::-webkit-scrollbar-thumb{
+        background: linear-gradient(rgba(2, 2, 2, 0.411),rgb(172, 172, 172));
+        border-radius: 50px;
+}
+.container{
+    max-width: 425px;
+    height: 100vh;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    overflow: hidden;
+}
+
+.content{
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    backdrop-filter: blur(15px);
+    background-color: #00000000;
+}
+header{
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    z-index: 25;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+}
+#header{
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px;
+    margin: 0px 15px;
+}
+.displaySong{
+    background-color: #00000033;
+    position: fixed;
+    z-index: 2;
+    top: 40px;
+    width: 100%;
+    height: calc(100vh  - 40px);
+    overflow-y: scroll;
+}
+.muginPlayer{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    background-color: #000000f1;
+    z-index: 50;
+    backdrop-filter: blur(15px); 
+    display: none;
+    backdrop-filter: blur(15px);
+}
+.miniPlayer{
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    display: none ;
+    background: #000000c5;
+    z-index: 30;
+
+}
+.miniloader{
+ width: 100%;
+ height: 50px;
+ position: absolute;
+ background: rgba(0, 0, 0, 0.753);
+ display: none;
+ place-items: center;
+}
+
+.hide{
+    display: none;
+}
+/* this loader from other website */
+/* this loader from other website */
+/* this loader from other website */
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+ 
+}
+.lds-ellipsis div {
+  position: absolute;
+ top: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+/* this loader from other website */
+/* this loader from other website */
+/* this loader from other website */
+/* this loader from other website */
+
+
+.songInfo{
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding : 10px 5px;
+    line-height: 20px;
+
+}
+.miniPlayer span{
+    font-size: .9rem;
+}
+.playNext{
+    display: flex;
+    width: 20%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    padding: 0px 5px;
+
+}
+.cover{
+    width: 100%;
+    height: 40px;
+}
+.muginPlayer .minimize{
+  width: 120px;
+   height: 5px;
+   border-radius: 50px;
+   background-color: #c5c5c5;
+   position: relative;
+   left: 50%;
+   /* top: 50px; */
+ cursor: pointer;
+   transform: translate(-50%);
+   margin: 15px 0px;
+}
+.mugickaTitle{
+    padding: 0px 15px;
+    font-weight: 500;
+    font-size: 1.4rem; 
+}
+.muginPlayer #singerKaName{
+    text-align: center;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+.mugicKaImage{
+   width: 80%;
+   height: auto;
+   border: 1px solid grey;
+   position: relative;
+   left: 50%;
+   transform: translate(-50%);
+   overflow: hidden;
+   border-radius: 15px;
+   margin: 12px 0px;
+}
+.mugicKaImage img{
+    width: 100%;
+
+}
+.progress{
+    width: 100%;
+    height: 10px;
+    display: grid;
+    place-items: center;
+    /* border: 1px solid; */
+    margin: 30px 0px;
+}
+#progress{
+    -webkit-appearance: none;
+    width: 70%;
+    height: 4px;
+    background-color: rgb(136, 136, 136);
+    border-radius: 50px;
+}
+#progress::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 14px;
+    height:14px;
+    background-color: rgb(255, 230, 0);
+    border-radius: 50px;
+}
+.timeLine{
+    width: 70%;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 18px 0px;
+    font-size: .9rem;
+ 
+}
+#audioSrc{
+    display: none;
+}
+.sidebar{
+    width: 100%;
+    height: 100vh;
+    z-index: 10; 
+    position: absolute;
+    transition: .2s;
+    left: -100%;
+    top: 0;
+}
+.likeIcons,.audioCtrl{
+    width: 80%;
+    height: 60px;
+    /* border: 1px solid; */
+    margin: 35px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.audioCtrl{
+    height: 70px;
+    margin-top: -25px;
+}
+.audioCtrl .playerIcons{
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgb(99, 99, 99);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.4rem;
+    background: #4d4d4d00;
+}
+.audioCtrl .playerIcons:nth-child(2){
+    transform: scale(1.5);
+   
+    color: #fff;
+}
+.collapse{
+ left: 0%;
+}
+.displayCetegory{
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.192);
+    backdrop-filter: blur(15px);
+   
+}
+/* here is design singer Cetegory */
+.singersName{
+width: 100%;
+height: auto;
+/* border: 1px solid #fff; */
+align-items: center;
+display: flex;
+margin: 15px 0px;
+overflow-x: scroll;
+gap: 15px;
+
+}
+/* is overflow disbaling pending at sometime */
+.singersName::-webkit-scrollbar{
+    height: 0px; 
+    width: 0px;
+}
+.singersName::-webkit-scrollbar-track{
+        background-color: transparent;
+}
+.singersName::-webkit-scrollbar-thumb{
+        background: linear-gradient(rgba(2, 2, 2, 0.411),rgb(172, 172, 172));
+        border-radius: 50px;
+}
+
+.singersName .singerBox{
+    width: 120px !important;
+    height: auto;
+    /* border: 1px solid rgb(255, 255, 255); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px;
+    
+}
+.singerBox p{
+    font-size: .8rem;
+
+  
+}
+.singerImage{
+    width: 80px;
+    height: 80px;
+    /* border: 1px solid; */
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid grey;
+}
+.singerImage img{
+    width: 100%;
+}
+
+.trendingSong{
+    width: 100%;
+    height: 150px;
+    /* border: 1px solid; */
+    padding: 3px 6px;
+    display: flex;
+    align-items: center;
+    overflow-y: scroll;
+}
+.trendingSong::-webkit-scrollbar{
+    height: 0;
+}
+.trendinggana{
+    padding: 0px 12px;
+}
+.trendingBox{
+    width: 150px;
+    height: 120px ;
+    /* border: 1px solid; */
+    margin: 0px 10px;
+    
+}
+.trendingMianBox{
+    display: flex;
+    width: 130px;
+    height: 120px;
+    border: 1px solid  grey;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 4px ;
+    overflow: hidden;
+ position: relative;
+}
+.trplay{
+position: absolute;
+width: 130px;
+height: 120px;
+background: transparent;
+}
+.songImage{
+    width: 100%;
+    height: 70%;
+    /* border: 1px solid; */
+}
+.songImage img{
+    width: 100%;
+}
+.songFooter{
+    width: 100%;
+    padding: 0px 5px;
+    margin: 3px 0px;
+}
+.songFooter p{
+    width: 100%;
+ 
+}
+.trendingTxt{
+    width: 80%;
+    /* border: 1px solid; */
+    height: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#songTitle{
+    overflow: hidden;
+    font-size: .8rem;
+}
+
+/* mainSong design here  */
+.allsong{
+    width: 100%;
+    height: 50vh;
+    /* border: 2px solid; */
+}
+.mainSongs{
+    width: 94%;
+    height: 40px;
+    border: 1px solid rgb(100, 100, 100);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 8px 0px;
+    position: relative;
+    background-color: #5e5e5e17;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.mainImageBox{
+    width: 60px;
+    height: auto;
+    /* border: 1px solid; */
+    overflow: hidden;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+.mainImageBox img{
+    width: 100%;
+}
+.mainTitleBox{
+    width: calc(95% - 62px);
+    height: 42px;
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+    font-size: .9rem;
+}
+.clickerBox{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    /* background: linear-gradient(to left , #fff,#383838) ; */
+
+}
+.allSongLoader{
+    width: 100%;
+    height: 210px;
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.425);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+.chooseCetegory{
+    width: 100%;
+    height: calc(100vh - 40px);
+    position: relative;
+    top: 40px;
+    padding: 5px 8px;
+}
+.chooseCetegory .subHeading{
+    font-weight: 550;
+}
+.categoryBox{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 15px 5px;
+   
+}
+.categoryBox .songTypeBox{
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 15px;
+    cursor: pointer;
+    overflow: hidden;
+    
+}
+.categoryBox .songOverlayDisplay{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left ,#ffffff00,#000000);
+    padding: 2px 8px;
+    position: relative;
+}
+.click{
+    width: 120px;
+    height: 120px;
+    background-color: rgba(255, 0, 0, 0);
+    position: absolute;
+    top: 0;
+}
+
+
